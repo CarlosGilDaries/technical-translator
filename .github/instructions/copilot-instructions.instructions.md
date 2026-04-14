@@ -40,9 +40,8 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 1. **Updating this `.md` file** as the project evolves.
 2. **Marking tasks as `[x]`** when they are implemented.
 3. **Adding a short description** of what was built in each phase (under "✅ Progress").
-4. **Filling the Prompt Log table** each time you generate code from a significant prompt.
-5. **Keeping this file as the single source of truth** for the roadmap and progress.
-6. **Preserving the phase structure** (do not delete or reorder sections).
+4. **Keeping this file as the single source of truth** for the roadmap and progress.
+5. **Preserving the phase structure** (do not delete or reorder sections).
 
 ---
 
@@ -51,25 +50,33 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 **Goal:** Initialize backend and frontend projects with proper structure.
 
 ### Tasks
-- [ ] Create repository and local folder structure (`backend/`, `frontend/`)
-- [ ] **Backend Python virtual environment (CRITICAL first step):**
+- [x] Create repository and local folder structure (`backend/`, `frontend/`)
+- [x] **Backend Python virtual environment (CRITICAL first step):**
   - Navigate to `backend/`
-  - Run `python -m venv .venv` (or `venv`)
+  - Run `python -m venv .venv`
   - Activate it:
     - Windows: `.venv\Scripts\activate`
     - macOS/Linux: `source .venv/bin/activate`
   - Add `.venv/` to `.gitignore`
-- [ ] Install backend dependencies **inside the activated virtual environment**:
+- [x] Install backend dependencies **inside the activated virtual environment**:
   `pip install fastapi uvicorn openai python-dotenv pydantic`
-- [ ] Generate `backend/requirements.txt` with `pip freeze > requirements.txt`
-- [ ] Create `backend/main.py` with a health check endpoint (`GET /health`)
-- [ ] Initialize Vue 3 + Vite: `npm create vue@latest` (choose Vue 3, JavaScript, no TypeScript for speed)
-- [ ] Create `backend/.env.example` with `OPENAI_API_KEY=your_key_here`
-- [ ] Add `.gitignore` (ignore `.env`, `node_modules`, `__pycache__`, `.venv/`)
-- [ ] Create initial `README.md` with basic run instructions (without Docker first)
+- [x] Generate `backend/requirements.txt` with `pip freeze > requirements.txt`
+- [x] Create `backend/main.py` with a health check endpoint (`GET /health`)
+- [x] Initialize Vue 3 + Vite: `npm create vue@latest` (choose Vue 3, JavaScript, no TypeScript for speed)
+- [x] Create `backend/.env.example` with `OPENAI_API_KEY=your_key_here`
+- [x] Add `.gitignore` (ignore `.env`, `node_modules`, `__pycache__`, `.venv/`)
+- [x] Create initial `README.md` with basic run instructions (without Docker first)
 
 ### ✅ Progress
-- [ ] (Copilot will fill this as tasks are completed)
+- [x] Created `backend/` and `frontend/` folder structure.
+- [x] Python virtual environment created at `backend/.venv` (Python 3.13).
+- [x] Installed: fastapi==0.135.3, uvicorn==0.44.0, openai==2.31.0, python-dotenv==1.2.2, pydantic==2.13.0.
+- [x] Generated `backend/requirements.txt` via `pip freeze`.
+- [x] Created `backend/main.py` with `GET /health` endpoint and CORS middleware placeholder.
+- [x] Scaffolded Vue 3 + Vite project in `frontend/` (JavaScript, no TS, blank project), installed npm deps.
+- [x] Created `backend/.env.example` with `OPENAI_API_KEY=your_key_here`.
+- [x] Created root `.gitignore` (covers `.env`, `node_modules`, `__pycache__`, `.venv`).
+- [x] Created `README.md` with dev and Docker run instructions.
 
 ---
 
