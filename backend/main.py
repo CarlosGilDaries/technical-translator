@@ -1,5 +1,14 @@
+"""
+Main entry point for the AI Technical Translator Pro backend.
+
+Responsibilities: create the FastAPI app, register routers, configure middleware.
+Do NOT add endpoints, business logic, or Pydantic models here.
+"""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+from api.routes.health import router as health_router
 
 app = FastAPI(
     title="AI Technical Translator Pro",
@@ -15,12 +24,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(health_router)
 
-@app.get("/health")
-def health_check() -> dict:
-    """Return the health status of the API.
-
-    Returns:
-        dict: A dictionary with key 'status' set to 'ok'.
-    """
-    return {"status": "ok"}
