@@ -9,7 +9,7 @@ A web application that translates technical or complex text into clear, easy-to-
 Developers, managers, and students often struggle with jargon-heavy documentation, emails, or error messages. This tool makes technical knowledge accessible to anyone, regardless of their background.
 
 **How AI is used:**  
-The backend (FastAPI) sends the user's text and a mode-specific prompt to an LLM (OpenAI GPT-3.5-turbo). The AI returns a rewritten version adapted to the chosen audience. The frontend (Vue) provides a clean interface to input text, select a mode, and view the result.
+The backend (FastAPI) sends the user's text and a mode-specific prompt to an LLM (Groq API — Llama 3.3 70B). The AI returns a rewritten version adapted to the chosen audience. The frontend (Vue) provides a clean interface to input text, select a mode, and view the result.
 
 **Development Principles:**
 
@@ -24,13 +24,13 @@ The backend (FastAPI) sends the user's text and a mode-specific prompt to an LLM
 
 ## ⚙️ Tech Stack (fixed)
 
-| Layer     | Technology                                                            |
-| --------- | --------------------------------------------------------------------- |
-| Backend   | FastAPI, Uvicorn, OpenAI API (GPT-3.5-turbo), Pydantic, python-dotenv |
-| Frontend  | Vue 3 + Vite, Fetch API, Bootstrap                                    |
-| Container | Docker + docker-compose                                               |
-| Testing   | pytest (optional, but recommended)                                    |
-| AI model  | OpenAI `gpt-3.5-turbo` (temperature=0.3)                              |
+| Layer     | Technology                                                          |
+| --------- | ------------------------------------------------------------------- |
+| Backend   | FastAPI, Uvicorn, Groq API (Llama 3.3 70B), Pydantic, python-dotenv |
+| Frontend  | Vue 3 + Vite, Fetch API, Bootstrap                                  |
+| Container | Docker + docker-compose                                             |
+| Testing   | pytest (optional, but recommended)                                  |
+| AI model  | Groq `llama-3.3-70b-versatile` (temperature=0.3)                    |
 
 ---
 
@@ -92,7 +92,7 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 - [x] Generate `backend/requirements.txt` with `pip freeze > requirements.txt`
 - [x] Create `backend/main.py` with a health check endpoint (`GET /health`)
 - [x] Initialize Vue 3 + Vite: `npm create vue@latest` (choose Vue 3, JavaScript, no TypeScript for speed)
-- [x] Create `backend/.env.example` with `OPENAI_API_KEY=your_key_here`
+- [x] Create `backend/.env.example` with `GROQ_API_KEY=your_groq_key_here`
 - [x] Add `.gitignore` (ignore `.env`, `node_modules`, `__pycache__`, `.venv/`)
 - [x] Create initial `README.md` with basic run instructions (without Docker first)
 
@@ -106,9 +106,9 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 - [x] `main.py` refactored to only create the app, register routers, and configure CORS middleware.
 - [x] `GET /health` moved to `api/routes/health.py` using `APIRouter`.
 - [x] Pydantic models (`TranslationRequest`, `TranslationResponse`) moved to `models/translation.py`.
-- [x] `core/config.py` created with `Settings` (BaseSettings) loading `OPENAI_API_KEY` from `.env`.
+- [x] `core/config.py` created with `Settings` (BaseSettings) loading `GROQ_API_KEY`, `GROQ_MODEL`, and `GROQ_BASE_URL` from `.env`.
 - [x] Scaffolded Vue 3 + Vite project in `frontend/` (JavaScript, no TS, blank project), installed npm deps.
-- [x] Created `backend/.env.example` with `OPENAI_API_KEY=your_key_here`.
+- [x] Created `backend/.env.example` with `GROQ_API_KEY=your_groq_key_here` (safe placeholder only).
 - [x] Created root `.gitignore` (covers `.env`, `node_modules`, `__pycache__`, `.venv`).
 - [x] Created `README.md` with dev and Docker run instructions.
 
@@ -116,27 +116,32 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 
 ## 🔌 PHASE 2 — Backend API & AI Integration
 
-**Goal:** Create a working `/translate` endpoint that calls OpenAI API.
+**Goal:** Create a working `/translate` endpoint that calls Groq API.
 
 ### Tasks
 
 - [x] Define Pydantic models:
   - `TranslationRequest(text: str, mode: str = "simple")`
   - `TranslationResponse(translated_text: str)`
-- [ ] Create `call_ai(prompt: str) -> str` function using OpenAI SDK
-- [ ] Implement `POST /translate` endpoint:
+- [x] Create `call_ai(prompt: str) -> str` function using Groq API (OpenAI-compatible SDK)
+- [x] Implement `POST /translate` endpoint:
   - Build different system prompts based on `mode`:
     - `simple`: "Explain this in simple terms: {text}"
     - `eli5`: "Explain like I'm 10 years old: {text}"
     - `professional`: "Translate to professional non-technical language: {text}"
     - `analogies`: "Use an analogy to explain: {text}"
   - Call `call_ai()` and return JSON
-- [ ] Add CORS middleware (allow `http://localhost:5173`)
-- [ ] Add basic error handling (missing API key, timeout, malformed response)
+- [x] Add CORS middleware (allow `http://localhost:5173`)
+- [x] Add basic error handling (missing API key, timeout, malformed response)
 
 ### ✅ Progress
 
-- [ ]
+- [x] Created `services/translation.py` with `build_prompt(text, mode)` and `call_ai(prompt)` using Groq API via OpenAI-compatible SDK (`llama-3.3-70b-versatile`, temperature=0.3).
+- [x] Error handling covers missing API key, auth failure, connection error, and bad API status.
+- [x] Created `api/routes/translation.py` with `POST /translate` using `APIRouter`; route handler delegates entirely to service functions.
+- [x] Mode validation returns HTTP 400 for unknown modes; Groq errors return HTTP 503.
+- [x] Registered `translation_router` in `main.py`.
+- [x] Migrated from OpenAI to Groq: `core/config.py` updated with `groq_api_key`, `groq_model`, `groq_base_url`; `.env.example` updated with safe placeholders.
 
 ---
 
