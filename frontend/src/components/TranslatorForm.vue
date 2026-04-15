@@ -18,7 +18,7 @@ const mode = ref('simple');
 
 const MODES = [
   { value: 'simple', label: 'Simple' },
-  { value: 'eli5', label: 'ELI5 (Explícame como si tuviera 5 años)' },
+  { value: 'eli5', label: 'ELI5 (Explícame como si tuviera 10 años)' },
   { value: 'professional', label: 'Profesional' },
   { value: 'analogies', label: 'Analogías' },
 ];
