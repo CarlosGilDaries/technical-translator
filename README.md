@@ -18,12 +18,12 @@ Una aplicación web que traduce texto técnico o complejo a un lenguaje claro y 
 
 ```bash
 git clone https://github.com/CarlosGilDaries/technical-translator.git
-cd technical-translator
 ```
 
 ### Backend (terminal 1)
 
 ```bash
+cd technical-translator
 cd backend
 python -m venv .venv
 
@@ -41,6 +41,7 @@ uvicorn main:app --reload --port 8000
 ### Frontend (terminal 2)
 
 ```bash
+cd technical-translator
 cd frontend
 npm install
 npm run dev
