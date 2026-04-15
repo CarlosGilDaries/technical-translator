@@ -66,3 +66,10 @@ docker-compose up
 ```
 
 App available at http://localhost:8080.
+
+## Getting a Groq API Key
+
+1. Go to [https://console.groq.com/keys](https://console.groq.com/keys)
+2. Sign in or create a free account
+3. Click **Create API Key**, give it a name, and copy it
+4. Paste it into your `backend/.env` file as `GROQ_API_KEY=your_key_here` (Delete `your_key_here` and paste the actual key provided by Groq)
