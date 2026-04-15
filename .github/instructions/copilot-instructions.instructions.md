@@ -172,44 +172,27 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 
 ---
 
-## 🧠 PHASE 4 — Multi-Mode Polish
-
-**Goal:** Refactor prompt logic and ensure all four modes work well.
-
-### Tasks
-
-- [ ] Refactor backend prompt builder into a separate function `build_prompt(text, mode)`
-- [ ] Test each mode with sample inputs (e.g., "What is a microservice?")
-- [ ] Fine-tune system prompts for better output quality
-- [ ] Add a small note in frontend about which mode is active
-
-### ✅ Progress
-
-- [ ]
-
----
-
-## 🐳 PHASE 5 — Dockerization
+## 🐳 PHASE 4 — Dockerization
 
 **Goal:** Containerize both backend and frontend so the app runs with `docker-compose up`.
 
 ### Tasks
 
-- [ ] Create `backend/Dockerfile`:
+- [x] Create `backend/Dockerfile`:
   - Use `python:3.11-slim`
   - Copy `requirements.txt`, install deps
   - Copy source code
   - Expose port 8000
   - Run `uvicorn main:app --host 0.0.0.0 --port 8000`
-- [ ] Create `frontend/Dockerfile`:
-  - Use `node:18-alpine` as build stage
+- [x] Create `frontend/Dockerfile`:
+  - Use `node:22-alpine` as build stage
   - Run `npm run build`
   - Use `nginx:alpine` to serve the `dist` folder
   - Expose port 80
-- [ ] Create `docker-compose.yml`:
+- [x] Create `docker-compose.yml`:
   - Backend service (build `./backend`, ports `8000:8000`, env file)
   - Frontend service (build `./frontend`, ports `8080:80`)
-- [ ] Update `README.md` with Docker instructions:
+- [x] Update `README.md` with Docker instructions:
 
   ```bash
   cp backend/.env.example backend/.env
@@ -221,4 +204,8 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 
 ### ✅ Progress
 
-- [ ]
+- [x] Created `backend/Dockerfile`: multi-stage build (builder + python:3.11-slim runtime), no `.venv` or `.env` included via `.dockerignore`.
+- [x] Created `frontend/Dockerfile`: multi-stage build (node:18-alpine builder + nginx:alpine server), serves `dist/`.
+- [x] Created `docker-compose.yml`: backend on port 8000, frontend on port 8080, `env_file` for Groq key, `depends_on` ordering.
+- [x] Created `backend/.dockerignore` and `frontend/.dockerignore`.
+- [x] Updated `README.md`: Groq references, Docker run instructions.
