@@ -52,7 +52,7 @@ El frontend estará disponible en http://localhost:5173 y la API del backend en 
 ### Health check
 
 ```
-GET http://localhost:8000/health
+http://localhost:8000/health
 ```
 
 ### Documentación de la API (Swagger UI)
