@@ -151,19 +151,24 @@ As the AI assistant, you (GitHub Copilot) are responsible for:
 
 ### Tasks
 
-- [ ] In `frontend/src/App.vue`, create:
+- [x] In `frontend/src/App.vue`, create:
   - Textarea for user input (v-model)
   - Select dropdown for mode (simple, eli5, professional, analogies)
   - Translate button
   - Div to display the translated result
-- [ ] Add loading state ("Translating...") while fetching
-- [ ] Add error message display (if backend fails)
-- [ ] Use `fetch` to call `http://localhost:8000/translate` with `POST` and JSON body
-- [ ] Style minimally (basic CSS or Tailwind – not critical)
+- [x] Add loading state ("Translating...") while fetching
+- [x] Add error message display (if backend fails)
+- [x] Use `fetch` to call `http://localhost:8000/translate` with `POST` and JSON body
+- [x] Style minimally (responsive, clean, visually appealing using Bootstrap classes)
 
 ### ✅ Progress
 
-- [ ]
+- [x] Installed Bootstrap 5 via npm; imported in `main.js`.
+- [x] Created `src/api/translationApi.js`: single-responsibility HTTP module with `translateText(text, mode)`. Handles non-OK responses and parses error detail.
+- [x] Created `src/composables/useTranslation.js`: encapsulates `result`, `isLoading`, `error` refs and the `translate()` action. Components depend only on this composable.
+- [x] Created `src/components/TranslatorForm.vue`: captures text + mode, emits `submit` event. No API knowledge.
+- [x] Created `src/components/TranslationResult.vue`: pure display component, receives result/isLoading/error as props. Shows spinner, error alert, or result box.
+- [x] `App.vue` wires composable and components only — no business logic or fetch calls.
 
 ---
 
