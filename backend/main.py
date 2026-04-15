@@ -12,7 +12,7 @@ from api.routes.health import router as health_router
 from api.routes.translation import router as translation_router
 
 app = FastAPI(
-    title="AI Technical Translator Pro",
+    title="AI Technical Translator",
     description="Translates technical text into easy-to-understand language.",
     version="0.1.0",
 )
