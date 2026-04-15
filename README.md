@@ -1,4 +1,4 @@
-# AI Technical Translator Pro
+# AI Technical Translator
 
 A web application that translates technical or complex text into clear, easy-to-understand language. Supports four explanation modes: **simple**, **ELI5**, **professional non-technical**, and **analogy-based**.
 
