@@ -2,7 +2,6 @@
 Main entry point for the AI Technical Translator Pro backend.
 
 Responsibilities: create the FastAPI app, register routers, configure middleware.
-Do NOT add endpoints, business logic, or Pydantic models here.
 """
 
 from fastapi import FastAPI
