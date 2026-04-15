@@ -29,7 +29,6 @@ The backend (FastAPI) sends the user's text and a mode-specific prompt to an LLM
 | Backend   | FastAPI, Uvicorn, Groq API (Llama 3.3 70B), Pydantic, python-dotenv |
 | Frontend  | Vue 3 + Vite, Fetch API, Bootstrap                                  |
 | Container | Docker + docker-compose                                             |
-| Testing   | pytest (optional, but recommended)                                  |
 | AI model  | Groq `llama-3.3-70b-versatile` (temperature=0.3)                    |
 
 ---

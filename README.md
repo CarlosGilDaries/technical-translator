@@ -9,7 +9,12 @@ A web application that translates technical or complex text into clear, easy-to-
 
 ## Running without Docker (Development)
 
-### Backend
+```bash
+git clone https://github.com/CarlosGilDaries/technical-translator.git
+cd technical-translator
+```
+
+### Backend (terminal 1)
 
 ```bash
 cd backend
@@ -26,7 +31,7 @@ cp .env.example .env
 uvicorn main:app --reload --port 8000
 ```
 
-### Frontend
+### Frontend (terminal 2)
 
 ```bash
 cd frontend
@@ -53,6 +58,8 @@ http://localhost:8000/docs
 ## Running with Docker
 
 ```bash
+git clone https://github.com/CarlosGilDaries/technical-translator.git
+cd technical-translator
 cp backend/.env.example backend/.env
 # Add your Groq API key to backend/.env
 docker-compose up
