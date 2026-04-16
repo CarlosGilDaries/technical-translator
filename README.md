@@ -12,7 +12,6 @@ Una aplicación web que traduce texto técnico o complejo a un lenguaje claro y 
 1. Ve a [https://console.groq.com/keys](https://console.groq.com/keys)
 2. Inicia sesión o crea una cuenta gratuita
 3. Haz clic en **Create API Key**, ponle un nombre y guárdala (Groq no volverá a mostrártela, por lo que es conveniente pegarla en un lugar seguro antes de continuar)
-4. Pégala en el archivo `backend/.env` como `GROQ_API_KEY=your_key_here` cuando se indique
 
 ## Ejecución sin Docker (Desarrollo)
 
